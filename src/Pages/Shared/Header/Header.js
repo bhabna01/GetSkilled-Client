@@ -1,9 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGlideG, FaGraduationCap, IconName } from "react-icons/fa";
+import { FaBullhorn, FaGlideG, FaGraduationCap, FaUser, IconName } from "react-icons/fa";
 import './Header.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import { Button, Image } from 'react-bootstrap';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
+
     return (
         <nav className="navbar navbar-expand-lg header">
             <div className="container-fluid">
@@ -13,7 +24,7 @@ const Header = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+                    <ul className="navbar-nav ms-auto  mt-3 mb-lg-0 ">
                         <li className="nav-item">
                             <Link to="/">Home</Link>
                         </li>
@@ -26,9 +37,33 @@ const Header = () => {
                         <li className="nav-item">
                             <Link to="/faq">FAQ</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login">Login</Link>
+
+                        <li className='nav-item text-white me-2 ms-3 mb-3 '>
+
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span className=' me-2'> {user?.displayName}</span>
+                                        {user?.photoURL ?
+                                            <Image className='me-2' style={{ height: '40px' }} roundedCircle src={user?.photoURL}></Image>
+                                            :
+                                            <FaUser></FaUser>
+                                        }
+                                        <Button onClick={handleLogOut}>Logout</Button>
+                                    </>
+
+                                    :
+                                    <>
+                                        <Link to="/login">Login</Link>
+
+                                        <Link to="/register">Register</Link>
+
+
+                                    </>
+                            }
+
                         </li>
+
                     </ul>
 
                 </div>

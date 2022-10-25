@@ -7,7 +7,7 @@ const Course = () => {
     const { title, image_url, details, category_id } = course;
     return (
         <div>
-            <Card>
+            <Card className='w-50 container-fluid'>
                 <Card.Img variant="top" src={image_url} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>

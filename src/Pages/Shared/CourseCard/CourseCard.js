@@ -9,7 +9,7 @@ const CourseCard = ({ category }) => {
     const { _id, title, details, image_url } = category;
     return (
         <div>
-            <Card className='mb-5'>
+            <Card className='mb-5  '>
                 <Card.Header className='d-flex justify-content-between align-items-center'>
 
                     <div>
