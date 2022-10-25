@@ -20,6 +20,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
+                loader: () => fetch('http://localhost:5000/courses'),
+
                 element: <Courses></Courses>
 
 
@@ -30,6 +32,12 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
 
             },
+            // {
+            //     path: '/courses/:id',
+            //     element: ,
+            //     loader: ({ params }) => fetch(`https://dragon-news-server-rho-amber.vercel.app/news/${params.id}`)
+
+            // },
             {
                 path: '/faq',
                 element: <FAQ></FAQ>
