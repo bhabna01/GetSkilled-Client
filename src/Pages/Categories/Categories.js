@@ -1,15 +1,19 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import LeftsideNav from '../Shared/LeftsideNav/LeftsideNav';
+import { useLoaderData } from 'react-router-dom';
+import CourseCard from '../Shared/CourseCard/CourseCard';
+
 
 const Categories = () => {
+    const categories = useLoaderData();
     return (
         <div>
-            <Row>
-                <Col lg='2'>
-                    <LeftsideNav></LeftsideNav>
-                </Col>
-            </Row>
+            <h1>This category has{categories.length}</h1>
+            {
+                categories.map(category => <CourseCard key={category._id}
+                    category={category}>
+                </CourseCard>)
+            }
+
         </div>
     );
 };
