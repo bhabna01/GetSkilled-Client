@@ -17,7 +17,7 @@ const Courses = () => {
 
 
 
-                    <h1>Dragon news :{allCourses.length}</h1>
+                    <h1>Courses :{allCourses.length}</h1>
                     {
                         allCourses.map(category => <CourseCard
 
