@@ -9,6 +9,11 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState('light')
+    const toggleTheme = () => {
+        setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
+    }
+
     const gitLogin = (provider) => {
         return signInWithPopup(auth, provider);
     }
@@ -36,7 +41,7 @@ const AuthProvider = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { user, providerLogin, logOut, createUser, signIn, gitLogin }
+    const authInfo = { user, loading, theme, providerLogin, logOut, createUser, signIn, gitLogin, toggleTheme }
 
     return (
 

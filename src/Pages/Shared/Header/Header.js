@@ -5,13 +5,17 @@ import './Header.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { Button, Image } from 'react-bootstrap';
+import ReactSwitch from 'react-switch';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut, toggleTheme, theme } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
+    }
+    const handleToggle = () => {
+        toggleTheme();
     }
 
 
@@ -63,6 +67,7 @@ const Header = () => {
                             }
 
                         </li>
+                        <li className="nav-item text-white">{theme === 'light' ? 'Light Mode' : 'Dark Mode'}<ReactSwitch onChange={handleToggle} checked={theme === 'dark'}></ReactSwitch></li>
 
                     </ul>
 
