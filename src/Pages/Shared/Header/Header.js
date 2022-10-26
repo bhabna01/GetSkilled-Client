@@ -45,7 +45,7 @@ const Header = () => {
                                     <>
                                         <span className=' me-2'> {user?.displayName}</span>
                                         {user?.photoURL ?
-                                            <Image className='me-2' style={{ height: '40px' }} roundedCircle src={user?.photoURL}></Image>
+                                            <Image className='me-2' style={{ height: '40px' }} roundedCircle src={user?.photoURL} title={user?.displayName}></Image>
                                             :
                                             <FaUser></FaUser>
                                         }
