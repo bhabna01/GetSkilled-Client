@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
@@ -7,13 +7,14 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext)
+    const { providerLogin, gitLogin } = useContext(AuthContext)
     const [error, setError] = useState('');
 
     const { signIn } = useContext(AuthContext)
     const nevigate = useNavigate();
     const location = useLocation();
     const googleProvider = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
@@ -22,6 +23,14 @@ const Login = () => {
             })
             .catch(error => console.error(error))
 
+    }
+    const handleGitSignIn = () => {
+        gitLogin(gitHubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
     }
     const from = location.state?.from?.pathname || '/'
     const handleSubmit = (event) => {
@@ -66,13 +75,13 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
-            <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+            <Form.Text className="text-danger">
+                {error}
             </Form.Text>
             <div className='d-flex flex-column justify-content-center'>
                 <ButtonGroup vertical>
                     <Button onClick={handleGoogleSignIn} variant='outline-primary ' className='mb-2'><FaGoogle></FaGoogle> Login with Google</Button>
-                    <Button variant='outline-dark' className='mb-2'><FaGithub></FaGithub> Login with Github </Button>
+                    <Button onClick={handleGitSignIn} variant='outline-dark' className='mb-2'><FaGithub></FaGithub> Login with Github </Button>
                 </ButtonGroup>
             </div>
 

@@ -9,6 +9,9 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const gitLogin = (provider) => {
+        return signInWithPopup(auth, provider);
+    }
     const providerLogin = (provider) => {
         return signInWithPopup(auth, provider);
     }
@@ -33,7 +36,7 @@ const AuthProvider = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { user, providerLogin, logOut, createUser, signIn }
+    const authInfo = { user, providerLogin, logOut, createUser, signIn, gitLogin }
 
     return (
 
