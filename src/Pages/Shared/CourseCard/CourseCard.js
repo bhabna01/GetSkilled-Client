@@ -1,14 +1,16 @@
 import React from 'react';
 
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
 
 const CourseCard = ({ category }) => {
+    const checkout = useLoaderData();
     const { _id, title, details, image_url } = category;
     return (
-        <div>
+        <div className='container-fluid'>
             <Card className='mb-5  '>
                 <Card.Header className='d-flex justify-content-between align-items-center'>
 
@@ -34,7 +36,7 @@ const CourseCard = ({ category }) => {
 
                 </Card.Body>
                 <Card.Footer className='d-flex justify-content-between align-items-center'>
-
+                    <Link to={`/checkout/${category._id}`}><Button>Get Premium access</Button></Link>
                 </Card.Footer>
             </Card>
         </div>
