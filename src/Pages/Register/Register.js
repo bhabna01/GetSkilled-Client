@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
@@ -36,12 +37,12 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group className="mb-3 ms-0" controlId="formBasicEmail">
                     <Form.Label className='m-0'>Photo URL</Form.Label>
-                    <Form.Control name='photoURL' type="text" placeholder="Enter Photo URL" required />
+                    <Form.Control name='photoURL' type="text" placeholder="Enter Photo URL" />
 
                 </Form.Group>
                 <Form.Group className="mb-3 ms-0" controlId="formBasicEmail">
                     <Form.Label className='m-0'>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" required />
 
                 </Form.Group>
 
@@ -55,9 +56,9 @@ const Register = () => {
                 </Button>
             </Form>
             <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {error}
             </Form.Text>
-
+            <p> Already have an Account?<Link to='/login'>Login</Link></p>
         </div>
     );
 };

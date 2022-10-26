@@ -34,7 +34,7 @@
 
 #dark {
   background-color: #282c34;
-  color: white;
+  color: rgb(85, 192, 165);
 }
 
 @keyframes App-logo-spin {

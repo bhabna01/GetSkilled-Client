@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
@@ -84,6 +84,7 @@ const Login = () => {
                     <Button onClick={handleGitSignIn} variant='outline-dark' className='mb-2'><FaGithub></FaGithub> Login with Github </Button>
                 </ButtonGroup>
             </div>
+            <p>New to this Website?<Link to='/register'>Register</Link></p>
 
         </div>
     );

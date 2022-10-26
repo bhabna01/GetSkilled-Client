@@ -29,6 +29,11 @@ const Header = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ms-auto  mt-3 mb-lg-0 ">
+
+                        <div className='d-flex' >
+                            <p className='text-white me-3'> {theme === 'light' ? 'Light Mode' : 'Dark Mode'}</p>
+                            <ReactSwitch onChange={handleToggle} checked={theme === 'dark'}></ReactSwitch>
+                        </div>
                         <li className="nav-item">
                             <Link to="/">Home</Link>
                         </li>
@@ -60,14 +65,14 @@ const Header = () => {
                                     <>
                                         <Link to="/login">Login</Link>
 
-                                        <Link to="/register">Register</Link>
+
 
 
                                     </>
                             }
 
                         </li>
-                        <li className="nav-item text-white">{theme === 'light' ? 'Light Mode' : 'Dark Mode'}<ReactSwitch onChange={handleToggle} checked={theme === 'dark'}></ReactSwitch></li>
+
 
                     </ul>
 

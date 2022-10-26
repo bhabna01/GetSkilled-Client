@@ -14,7 +14,7 @@ const Courses = () => {
                     <LeftsideNav></LeftsideNav>
                 </Col>
                 <Col lg='7'>
-                    <h1 className='text-center'>Courses :{allCourses.length}</h1>
+                    <h1 className='text-center'>Featured Courses</h1>
                     {
                         allCourses.map(category => <CourseCard
 
