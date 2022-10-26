@@ -55,7 +55,7 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
-            <Form.Text className="text-muted">
+            <Form.Text className="text-danger">
                 {error}
             </Form.Text>
             <p> Already have an Account?<Link to='/login'>Login</Link></p>

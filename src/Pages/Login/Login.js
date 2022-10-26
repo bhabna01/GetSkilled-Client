@@ -7,6 +7,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Login = () => {
+
     const { providerLogin, gitLogin } = useContext(AuthContext)
     const [error, setError] = useState('');
 
@@ -15,13 +16,18 @@ const Login = () => {
     const location = useLocation();
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
+    const from = location.state?.from?.pathname || '/'
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                nevigate(from, { repalce: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+
+            })
 
     }
     const handleGitSignIn = () => {
@@ -29,10 +35,11 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                nevigate(from, { repalce: true });
             })
             .catch(error => console.error(error))
     }
-    const from = location.state?.from?.pathname || '/'
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
