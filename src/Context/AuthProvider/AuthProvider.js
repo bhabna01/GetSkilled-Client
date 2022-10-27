@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { createContext } from 'react';
 import app from '../../firebase/firebase.config';
 import { useState } from 'react';
@@ -12,6 +12,10 @@ const AuthProvider = ({ children }) => {
     const [theme, setTheme] = useState('light')
     const toggleTheme = () => {
         setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
+    }
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
+
     }
 
     const gitLogin = (provider) => {
@@ -41,7 +45,7 @@ const AuthProvider = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { user, loading, theme, providerLogin, logOut, createUser, signIn, gitLogin, toggleTheme }
+    const authInfo = { user, loading, theme, providerLogin, logOut, createUser, signIn, gitLogin, toggleTheme, updateUserProfile }
 
     return (
 

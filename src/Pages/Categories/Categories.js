@@ -10,7 +10,7 @@ const Categories = () => {
     const categories = useLoaderData();
     const ref = useRef();
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid mt-5'>
             <ReactToPrint trigger={() => <Button>Download Pdf</Button>} content={() => ref.current}></ReactToPrint>
             <Row>
                 <Col lg='3'>

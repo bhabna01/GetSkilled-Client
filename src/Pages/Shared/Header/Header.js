@@ -22,7 +22,7 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg header">
             <div className="container-fluid">
-                <FaGraduationCap className='fs-2 text-white'></FaGraduationCap>
+                <FaGraduationCap className='fs-2 text-white ms-5'></FaGraduationCap>
                 <h2 className=''>GetSkilled</h2>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -21,11 +21,21 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                handleUpdateUser(name, photoURL);
             })
             .catch(e => {
                 console.error(e);
                 setError(e.message);
             });
+    }
+    const handleUpdateUser = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
     }
     return (
         <div className='container-fluid question w-50 border mb-5 shadow-lg p-3 bg-body rounded mt-5'>

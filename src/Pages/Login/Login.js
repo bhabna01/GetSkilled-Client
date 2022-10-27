@@ -78,7 +78,7 @@ const Login = () => {
                     <Form.Control name='password' type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className='mb-3'>
                     Login
                 </Button>
             </Form>
