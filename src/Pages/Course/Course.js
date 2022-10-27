@@ -8,8 +8,8 @@ const Course = () => {
     const { title, image_url, details, category_id } = course;
     const ref = useRef();
     return (
-        <div className=' mt-5 ' >
-            <ReactToPrint trigger={() => <Button className='ms-5'>Download Pdf</Button>} content={() => ref.current}></ReactToPrint>
+        <div className=' mt-5 mb-5' >
+            <ReactToPrint trigger={() => <Button className='ms-5 mb-5'>Download Pdf</Button>} content={() => ref.current}></ReactToPrint>
 
             <Card className='w-50 container-fluid' ref={ref}>
                 <Card.Img className='mt-2' variant="top" src={image_url} />
